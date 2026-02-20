@@ -759,14 +759,18 @@ const menuItems = computed(() => {
           />
         </template>
         <template v-else>
-          <div class="grid flex-shrink-0 place-content-center size-6">
-            <Logo class="size-4" />
+          <div class="flex flex-col gap-2 w-full">
+            <div
+              class="flex items-center justify-center px-3 py-3 mx-1 rounded-lg bg-[rgba(59,99,168,0.15)]"
+            >
+              <Logo class="h-14 w-auto max-w-[160px]" />
+            </div>
+            <div class="w-full h-px bg-n-weak" />
+            <SidebarAccountSwitcher
+              class="flex-grow -mx-1 min-w-0"
+              @show-create-account-modal="emit('showCreateAccountModal')"
+            />
           </div>
-          <div class="flex-shrink-0 w-px h-3 bg-n-strong" />
-          <SidebarAccountSwitcher
-            class="flex-grow -mx-1 min-w-0"
-            @show-create-account-modal="emit('showCreateAccountModal')"
-          />
         </template>
       </div>
       <div
