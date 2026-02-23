@@ -233,9 +233,10 @@ watch(
           ref="triggerRef"
           :to="to && !hasChildren ? to : undefined"
           type="button"
-          class="flex items-center justify-center size-10 rounded-lg"
+          class="flex items-center justify-center size-10 rounded-lg transition-all duration-150"
           :class="{
-            'text-white bg-[#3B63A8]': isActive || hasActiveChild,
+            'text-white bg-[#3B63A8] shadow-[0_0_16px_rgba(59,99,168,0.45)]':
+              isActive || hasActiveChild,
             'text-n-slate-11 hover:bg-[#1a2035]': !isActive && !hasActiveChild,
           }"
           :title="label"

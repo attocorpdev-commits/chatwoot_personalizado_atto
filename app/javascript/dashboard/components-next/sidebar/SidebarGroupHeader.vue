@@ -26,13 +26,14 @@ const count = computed(() =>
 <template>
   <component
     :is="to ? 'router-link' : 'div'"
-    class="flex items-center gap-2 px-1.5 py-1 rounded-lg h-8 min-w-0"
+    class="flex items-center gap-2 px-1.5 py-1 rounded-lg h-8 min-w-0 transition-all duration-150"
     role="button"
     draggable="false"
     :to="to"
     :title="label"
     :class="{
-      'text-white bg-[#3B63A8] font-medium': isActive && !hasActiveChild,
+      'text-white bg-[#3B63A8] shadow-[0_0_16px_rgba(59,99,168,0.45)] font-semibold':
+        isActive && !hasActiveChild,
       'text-[#7EB3FF] font-medium': hasActiveChild,
       'text-n-slate-11 hover:bg-[#1a2035]': !isActive && !hasActiveChild,
     }"

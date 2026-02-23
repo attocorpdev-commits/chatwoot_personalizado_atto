@@ -730,7 +730,7 @@ const menuItems = computed(() => {
       closeMobileSidebar,
       { ignore: ['#mobile-sidebar-launcher'] },
     ]"
-    class="bg-[#0F1117] flex flex-col text-sm pb-px fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 w-[200px] md:w-auto md:relative md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:translate-x-0 ltr:border-r rtl:border-l border-[#1a2035]"
+    class="bg-gradient-to-b from-[#0d1117] to-[#060a10] flex flex-col text-sm pb-px fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 w-[200px] md:w-auto md:relative md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:translate-x-0 ltr:border-r rtl:border-l border-[#1a2035]"
     :class="[
       {
         'shadow-lg md:shadow-none': isMobileSidebarOpen,
@@ -761,11 +761,13 @@ const menuItems = computed(() => {
         <template v-else>
           <div class="flex flex-col gap-2 w-full">
             <div
-              class="flex items-center justify-center px-3 py-3 mx-1 rounded-lg bg-[rgba(59,99,168,0.15)] border border-[#2a3868]"
+              class="flex items-center justify-center px-3 py-3 mx-1 rounded-xl bg-gradient-to-br from-[#1e3060]/60 to-[rgba(59,99,168,0.05)] border border-[#3B63A8]/40 shadow-[0_0_30px_rgba(59,99,168,0.15),inset_0_1px_0_rgba(255,255,255,0.04)]"
             >
               <Logo class="h-14 w-auto max-w-[160px]" />
             </div>
-            <div class="w-full h-px bg-n-weak" />
+            <div
+              class="w-full h-px bg-gradient-to-r from-transparent via-[#3B63A8]/30 to-transparent"
+            />
             <SidebarAccountSwitcher
               class="flex-grow -mx-1 min-w-0"
               @show-create-account-modal="emit('showCreateAccountModal')"
@@ -838,7 +840,7 @@ const menuItems = computed(() => {
       class="flex relative flex-col flex-shrink-0 gap-1 justify-between items-center"
     >
       <div
-        class="pointer-events-none absolute inset-x-0 -top-[1.938rem] h-8 bg-gradient-to-t from-[#0F1117] to-transparent"
+        class="pointer-events-none absolute inset-x-0 -top-[1.938rem] h-8 bg-gradient-to-t from-[#060a10] to-transparent"
       />
       <SidebarChangelogCard
         v-if="
@@ -855,7 +857,7 @@ const menuItems = computed(() => {
         "
       />
       <div
-        class="px-1 py-1.5 flex-shrink-0 flex w-full z-50 gap-2 items-center border-t border-n-weak shadow-[0px_-2px_4px_0px_rgba(27,28,29,0.02)]"
+        class="px-1 py-1.5 flex-shrink-0 flex w-full z-50 gap-2 items-center border-t border-[#1a2035] shadow-[0px_-4px_16px_0px_rgba(0,0,0,0.3)]"
         :class="isEffectivelyCollapsed ? 'justify-center' : 'justify-between'"
       >
         <SidebarProfileMenu
