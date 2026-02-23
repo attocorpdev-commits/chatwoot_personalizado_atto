@@ -116,6 +116,7 @@ class User < ApplicationRecord
   # rubocop:enable Rails/HasManyOrHasOneDependent
 
   before_validation :set_password_and_uid, on: :create
+  before_create :skip_confirmation!
   after_destroy :remove_macros
 
   scope :order_by_full_name, -> { order('lower(name) ASC') }
