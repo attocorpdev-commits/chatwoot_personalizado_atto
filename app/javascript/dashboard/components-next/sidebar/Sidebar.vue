@@ -226,7 +226,7 @@ const menuItems = computed(() => {
     {
       name: 'Inbox',
       label: t('SIDEBAR.INBOX'),
-      icon: 'i-lucide-inbox',
+      icon: 'i-ph-tray-fill',
       to: accountScopedRoute('inbox_view'),
       activeOn: ['inbox_view', 'inbox_view_conversation'],
       getterKeys: {
@@ -236,7 +236,7 @@ const menuItems = computed(() => {
     {
       name: 'Conversation',
       label: t('SIDEBAR.CONVERSATIONS'),
-      icon: 'i-lucide-message-circle',
+      icon: 'i-ph-chats-fill',
       children: [
         {
           name: 'All',
@@ -259,7 +259,7 @@ const menuItems = computed(() => {
         {
           name: 'Folders',
           label: t('SIDEBAR.CUSTOM_VIEWS_FOLDER'),
-          icon: 'i-lucide-folder',
+          icon: 'i-ph-folder-fill',
           activeOn: ['conversations_through_folders'],
           children: conversationCustomViews.value.map(view => ({
             name: `${view.name}-${view.id}`,
@@ -270,7 +270,7 @@ const menuItems = computed(() => {
         {
           name: 'Teams',
           label: t('SIDEBAR.TEAMS'),
-          icon: 'i-lucide-users',
+          icon: 'i-ph-users-three-fill',
           activeOn: ['conversations_through_team'],
           children: teams.value.map(team => ({
             name: `${team.name}-${team.id}`,
@@ -281,7 +281,7 @@ const menuItems = computed(() => {
         {
           name: 'Channels',
           label: t('SIDEBAR.CHANNELS'),
-          icon: 'i-lucide-mailbox',
+          icon: 'i-ph-envelope-fill',
           activeOn: ['conversation_through_inbox'],
           children: sortedInboxes.value.map(inbox => ({
             name: `${inbox.name}-${inbox.id}`,
@@ -299,7 +299,7 @@ const menuItems = computed(() => {
         {
           name: 'Labels',
           label: t('SIDEBAR.LABELS'),
-          icon: 'i-lucide-tag',
+          icon: 'i-ph-tag-fill',
           activeOn: ['conversations_through_label'],
           children: labels.value.map(label => ({
             name: `${label.title}-${label.id}`,
@@ -389,7 +389,7 @@ const menuItems = computed(() => {
     {
       name: 'Contacts',
       label: t('SIDEBAR.CONTACTS'),
-      icon: 'i-lucide-contact',
+      icon: 'i-ph-address-book-fill',
       children: [
         {
           name: 'All Contacts',
@@ -409,7 +409,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Segments',
-          icon: 'i-lucide-group',
+          icon: 'i-ph-squares-four-fill',
           label: t('SIDEBAR.CUSTOM_VIEWS_SEGMENTS'),
           children: contactCustomViews.value.map(view => ({
             name: `${view.name}-${view.id}`,
@@ -427,7 +427,7 @@ const menuItems = computed(() => {
         },
         {
           name: 'Tagged With',
-          icon: 'i-lucide-tag',
+          icon: 'i-ph-tag-fill',
           label: t('SIDEBAR.TAGGED_WITH'),
           children: labels.value.map(label => ({
             name: `${label.title}-${label.id}`,
@@ -452,7 +452,7 @@ const menuItems = computed(() => {
     {
       name: 'Companies',
       label: t('SIDEBAR.COMPANIES'),
-      icon: 'i-lucide-building-2',
+      icon: 'i-ph-buildings-fill',
       children: [
         {
           name: 'All Companies',
@@ -469,7 +469,7 @@ const menuItems = computed(() => {
     {
       name: 'Reports',
       label: t('SIDEBAR.REPORTS'),
-      icon: 'i-lucide-chart-spline',
+      icon: 'i-ph-chart-line-up-fill',
       children: [
         {
           name: 'Report Overview',
@@ -502,7 +502,7 @@ const menuItems = computed(() => {
     {
       name: 'Campaigns',
       label: t('SIDEBAR.CAMPAIGNS'),
-      icon: 'i-lucide-megaphone',
+      icon: 'i-ph-megaphone-fill',
       children: [
         {
           name: 'Live chat',
@@ -524,7 +524,7 @@ const menuItems = computed(() => {
     {
       name: 'Portals',
       label: t('SIDEBAR.HELP_CENTER.TITLE'),
-      icon: 'i-lucide-library-big',
+      icon: 'i-ph-books-fill',
       children: [
         {
           name: 'Articles',
@@ -571,12 +571,12 @@ const menuItems = computed(() => {
     {
       name: 'Settings',
       label: t('SIDEBAR.SETTINGS'),
-      icon: 'i-lucide-bolt',
+      icon: 'i-ph-gear-six-fill',
       children: [
         {
           name: 'Settings Account Settings',
           label: t('SIDEBAR.ACCOUNT_SETTINGS'),
-          icon: 'i-lucide-briefcase',
+          icon: 'i-ph-briefcase-fill',
           to: accountScopedRoute('general_settings_index'),
         },
         // {
@@ -588,13 +588,13 @@ const menuItems = computed(() => {
         {
           name: 'Settings Agents',
           label: t('SIDEBAR.AGENTS'),
-          icon: 'i-lucide-square-user',
+          icon: 'i-ph-user-fill',
           to: accountScopedRoute('agent_list'),
         },
         {
           name: 'Settings Teams',
           label: t('SIDEBAR.TEAMS'),
-          icon: 'i-lucide-users',
+          icon: 'i-ph-users-three-fill',
           activeOn: [
             'settings_teams_list',
             'settings_teams_new',
@@ -612,7 +612,7 @@ const menuItems = computed(() => {
               {
                 name: 'Settings Agent Assignment',
                 label: t('SIDEBAR.AGENT_ASSIGNMENT'),
-                icon: 'i-lucide-user-cog',
+                icon: 'i-ph-user-gear-fill',
                 activeOn: [
                   'assignment_policy_index',
                   'agent_assignment_policy_index',
@@ -629,7 +629,7 @@ const menuItems = computed(() => {
         {
           name: 'Settings Inboxes',
           label: t('SIDEBAR.INBOXES'),
-          icon: 'i-lucide-inbox',
+          icon: 'i-ph-tray-fill',
           activeOn: [
             'settings_inbox_list',
             'settings_inbox_show',
@@ -643,79 +643,79 @@ const menuItems = computed(() => {
         {
           name: 'Settings Labels',
           label: t('SIDEBAR.LABELS'),
-          icon: 'i-lucide-tags',
+          icon: 'i-ph-tag-fill',
           to: accountScopedRoute('labels_list'),
         },
         {
           name: 'Settings Custom Attributes',
           label: t('SIDEBAR.CUSTOM_ATTRIBUTES'),
-          icon: 'i-lucide-code',
+          icon: 'i-ph-code-fill',
           to: accountScopedRoute('attributes_list'),
         },
         {
           name: 'Settings Automation',
           label: t('SIDEBAR.AUTOMATION'),
-          icon: 'i-lucide-repeat',
+          icon: 'i-ph-repeat-fill',
           to: accountScopedRoute('automation_list'),
         },
         {
           name: 'Settings Agent Bots',
           label: t('SIDEBAR.AGENT_BOTS'),
-          icon: 'i-lucide-bot',
+          icon: 'i-ph-robot-fill',
           to: accountScopedRoute('agent_bots'),
         },
         {
           name: 'Settings Macros',
           label: t('SIDEBAR.MACROS'),
-          icon: 'i-lucide-toy-brick',
+          icon: 'i-ph-puzzle-piece-fill',
           to: accountScopedRoute('macros_wrapper'),
         },
         {
           name: 'Settings Canned Responses',
           label: t('SIDEBAR.CANNED_RESPONSES'),
-          icon: 'i-lucide-message-square-quote',
+          icon: 'i-ph-chat-text-fill',
           to: accountScopedRoute('canned_list'),
         },
         {
           name: 'Settings Integrations',
           label: t('SIDEBAR.INTEGRATIONS'),
-          icon: 'i-lucide-blocks',
+          icon: 'i-ph-app-window-fill',
           to: accountScopedRoute('settings_applications'),
         },
         {
           name: 'Settings Audit Logs',
           label: t('SIDEBAR.AUDIT_LOGS'),
-          icon: 'i-lucide-briefcase',
+          icon: 'i-ph-clipboard-text-fill',
           to: accountScopedRoute('auditlogs_list'),
         },
         {
           name: 'Settings Custom Roles',
           label: t('SIDEBAR.CUSTOM_ROLES'),
-          icon: 'i-lucide-shield-plus',
+          icon: 'i-ph-shield-plus-fill',
           to: accountScopedRoute('custom_roles_list'),
         },
         {
           name: 'Settings Sla',
           label: t('SIDEBAR.SLA'),
-          icon: 'i-lucide-clock-alert',
+          icon: 'i-ph-clock-countdown-fill',
           to: accountScopedRoute('sla_list'),
         },
         {
           name: 'Conversation Workflow',
           label: t('SIDEBAR.CONVERSATION_WORKFLOW'),
-          icon: 'i-lucide-workflow',
+          icon: 'i-ph-git-branch-fill',
           to: accountScopedRoute('conversation_workflow_index'),
         },
         {
           name: 'Settings Security',
           label: t('SIDEBAR.SECURITY'),
-          icon: 'i-lucide-shield',
+          icon: 'i-ph-shield-fill',
           to: accountScopedRoute('security_settings_index'),
         },
         {
           name: 'Settings Billing',
           label: t('SIDEBAR.BILLING'),
-          icon: 'i-lucide-credit-card',
+          icon: 'i-ph-credit-card-fill',
           to: accountScopedRoute('billing_settings_index'),
         },
       ],
