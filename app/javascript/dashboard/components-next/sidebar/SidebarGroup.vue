@@ -233,7 +233,7 @@ watch(
           ref="triggerRef"
           :to="to && !hasChildren ? to : undefined"
           type="button"
-          class="flex items-center justify-center size-10 rounded-lg transition-all duration-150"
+          class="flex items-center justify-center size-12 rounded-lg transition-all duration-150"
           :class="{
             'text-white bg-[#3B63A8] shadow-[0_0_16px_rgba(59,99,168,0.45)]':
               isActive || hasActiveChild,
@@ -242,7 +242,7 @@ watch(
           :title="label"
           @click="hasChildren ? handleCollapsedClick() : undefined"
         >
-          <Icon v-if="icon" :icon="icon" class="size-5" />
+          <Icon v-if="icon" :icon="icon" class="size-[30px]" />
         </component>
         <SidebarCollapsedPopover
           v-if="hasChildren && isPopoverOpen"
