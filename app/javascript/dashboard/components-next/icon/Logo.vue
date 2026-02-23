@@ -3,8 +3,7 @@ import { useAttrs } from 'vue';
 
 const attrs = useAttrs();
 
-const companyLogoUrl =
-  'https://krpophlzyxkzxeocgfow.supabase.co/storage/v1/object/public/Logo/Gemini_Generated_Image_v0mdlav0mdlav0md-removebg-preview.png';
+const companyLogoUrl = '/atto-logo.png';
 </script>
 
 <template>
