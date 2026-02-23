@@ -235,10 +235,9 @@ watch(
           type="button"
           class="flex items-center justify-center size-12 rounded-lg transition-all duration-150"
           :class="{
-            'text-white bg-[#3B63A8] shadow-[0_0_12px_rgba(59,99,168,0.2)] dark:shadow-[0_0_16px_rgba(59,99,168,0.45)]':
+            'text-white bg-[#3B63A8] shadow-[0_0_16px_rgba(59,99,168,0.45)]':
               isActive || hasActiveChild,
-            'text-gray-500 hover:bg-[#F3F4F6] dark:text-n-slate-11 dark:hover:bg-[#1a2035]':
-              !isActive && !hasActiveChild,
+            'text-n-slate-11 hover:bg-[#1a2035]': !isActive && !hasActiveChild,
           }"
           :title="label"
           @click="hasChildren ? handleCollapsedClick() : undefined"
