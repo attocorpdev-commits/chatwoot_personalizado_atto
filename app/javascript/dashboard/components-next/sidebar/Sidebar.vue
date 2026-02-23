@@ -826,7 +826,7 @@ const menuItems = computed(() => {
       :class="isEffectivelyCollapsed ? 'px-1' : 'px-2'"
     >
       <ul
-        class="flex flex-col gap-2 m-0 list-none min-w-0"
+        class="flex flex-col gap-3 m-0 list-none min-w-0"
         :class="{ 'items-center': isEffectivelyCollapsed }"
       >
         <SidebarGroup
