@@ -31,9 +31,9 @@ const shouldRenderComponent = computed(() => {
       :is="to ? 'router-link' : 'div'"
       :to="to"
       :title="label"
-      class="flex h-10 items-center gap-2 px-2 py-1 rounded-lg transition-all duration-150 hover:bg-[#1a2035] group min-w-0"
+      class="flex h-10 items-center gap-2 px-2 py-1 rounded-lg transition-all duration-150 hover:bg-[#F3F4F6] dark:hover:bg-[#1a2035] group min-w-0"
       :class="{
-        'text-white bg-[#3B63A8] shadow-[0_0_16px_rgba(59,99,168,0.45)] active':
+        'text-white bg-[#3B63A8] shadow-[0_0_12px_rgba(59,99,168,0.2)] dark:shadow-[0_0_16px_rgba(59,99,168,0.45)] active':
           active,
       }"
     >
