@@ -48,10 +48,9 @@ const count = computed(() =>
     </div>
     <div class="flex items-center gap-1.5 flex-grow min-w-0 flex-1">
       <span
-        class="truncate"
+        class="truncate font-medium text-sm"
         :class="{
-          'text-body-main': !isActive,
-          'font-medium text-sm': isActive || hasActiveChild,
+          'tracking-wide': !isActive && !hasActiveChild,
         }"
       >
         {{ label }}

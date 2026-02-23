@@ -829,11 +829,15 @@ const menuItems = computed(() => {
         class="flex flex-col gap-3 m-0 list-none min-w-0"
         :class="{ 'items-center': isEffectivelyCollapsed }"
       >
-        <SidebarGroup
-          v-for="item in menuItems"
-          :key="item.name"
-          v-bind="item"
-        />
+        <template v-for="item in menuItems" :key="item.name">
+          <li
+            v-if="['Contacts', 'Reports', 'Settings'].includes(item.name)"
+            role="separator"
+            aria-hidden="true"
+            class="list-none h-px bg-gradient-to-r from-transparent via-[#1a2035] to-transparent mx-2 my-0.5"
+          />
+          <SidebarGroup v-bind="item" />
+        </template>
       </ul>
     </nav>
     <section

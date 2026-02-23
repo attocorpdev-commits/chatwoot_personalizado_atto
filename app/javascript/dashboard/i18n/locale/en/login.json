@@ -23,6 +23,15 @@
     "FORGOT_PASSWORD": "Forgot your password?",
     "CREATE_NEW_ACCOUNT": "Create a new account",
     "SUBMIT": "Login",
+    "BRAND_PANEL": {
+      "TAGLINE_1": "Every conversation,",
+      "TAGLINE_2": "an opportunity.",
+      "SUBTITLE": "Manage clients, teams and channels with intelligence in one place.",
+      "FEATURE_1": "Multichannel: WhatsApp, Email, Chat and more",
+      "FEATURE_2": "Team management with intelligent assignment",
+      "FEATURE_3": "Reports and real-time metrics",
+      "FOOTER": "© 2025 ATTO CORP. All rights reserved."
+    },
     "SAML": {
       "LABEL": "Login via SSO",
       "TITLE": "Initiate Single Sign-on (SSO)",
