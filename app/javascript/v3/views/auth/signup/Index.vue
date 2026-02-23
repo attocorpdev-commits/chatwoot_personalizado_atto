@@ -5,6 +5,7 @@ import SignupForm from './components/Signup/Form.vue';
 import Testimonials from './components/Testimonials/Index.vue';
 import Spinner from 'shared/components/Spinner.vue';
 import signupBg from 'assets/images/auth/signup-bg.jpg';
+import attoLogo from 'dashboard/assets/images/atto-logo.png';
 
 const store = useStore();
 
@@ -39,7 +40,7 @@ const resizeContainers = () => {
       <div class="flex-1 flex items-center justify-center py-10 px-10">
         <div class="max-w-[420px] w-full">
           <div class="mb-6">
-            <img src="/atto-logo.png" alt="Atto CRM" class="w-auto h-10" />
+            <img :src="attoLogo" alt="Atto CRM" class="w-auto h-10" />
             <h2 class="mt-6 text-2xl font-semibold text-n-slate-12">
               {{
                 isAChatwootInstance

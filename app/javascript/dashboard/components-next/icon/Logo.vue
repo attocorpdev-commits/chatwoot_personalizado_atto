@@ -1,9 +1,10 @@
 <script setup>
 import { useAttrs } from 'vue';
+import attoLogo from 'dashboard/assets/images/atto-logo.png';
 
 const attrs = useAttrs();
 
-const companyLogoUrl = '/atto-logo.png';
+const companyLogoUrl = attoLogo;
 </script>
 
 <template>

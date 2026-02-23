@@ -8,6 +8,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { SESSION_STORAGE_KEYS } from 'dashboard/constants/sessionStorage';
 import SessionStorage from 'shared/helpers/sessionStorage';
 import { useBranding } from 'shared/composables/useBranding';
+import attoLogo from 'dashboard/assets/images/atto-logo.png';
 
 // components
 import SimpleDivider from '../../components/Divider/SimpleDivider.vue';
@@ -55,6 +56,7 @@ export default {
     return {
       // We need to initialize the component with any
       // properties that will be used in it
+      attoLogoUrl: attoLogo,
       credentials: {
         email: '',
         password: '',
@@ -223,7 +225,7 @@ export default {
     class="flex flex-col w-full min-h-screen py-20 bg-n-brand/5 dark:bg-n-background sm:px-6 lg:px-8"
   >
     <section class="max-w-5xl mx-auto">
-      <img src="/atto-logo.png" alt="Atto CRM" class="w-auto h-12 mx-auto" />
+      <img :src="attoLogoUrl" alt="Atto CRM" class="w-auto h-12 mx-auto" />
       <h2 class="mt-6 text-3xl font-medium text-center text-n-slate-12">
         {{ replaceInstallationName($t('LOGIN.TITLE')) }}
       </h2>
