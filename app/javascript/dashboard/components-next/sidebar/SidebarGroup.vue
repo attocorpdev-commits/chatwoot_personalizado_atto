@@ -242,7 +242,7 @@ watch(
           :title="label"
           @click="hasChildren ? handleCollapsedClick() : undefined"
         >
-          <Icon v-if="icon" :icon="icon" class="size-4" />
+          <Icon v-if="icon" :icon="icon" class="size-5" />
         </component>
         <SidebarCollapsedPopover
           v-if="hasChildren && isPopoverOpen"
