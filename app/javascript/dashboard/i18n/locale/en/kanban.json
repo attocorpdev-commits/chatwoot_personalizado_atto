@@ -1,0 +1,12 @@
+{
+  "KANBAN": {
+    "TITLE": "Kanban",
+    "EMPTY_STATE": "No conversations",
+    "COLUMNS": {
+      "OPEN": "Open",
+      "PENDING": "Pending",
+      "SNOOZED": "Snoozed",
+      "RESOLVED": "Resolved"
+    }
+  }
+}

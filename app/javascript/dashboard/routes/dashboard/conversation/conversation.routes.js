@@ -13,6 +13,13 @@ const CONVERSATION_PERMISSIONS = [
 export default {
   routes: [
     {
+      path: frontendURL('accounts/:accountId/conversations/kanban'),
+      name: 'conversations_kanban',
+      meta: { permissions: CONVERSATION_PERMISSIONS },
+      component: () =>
+        import('dashboard/components-next/kanban/KanbanBoard.vue'),
+    },
+    {
       path: frontendURL('accounts/:accountId/dashboard'),
       name: 'home',
       meta: {
