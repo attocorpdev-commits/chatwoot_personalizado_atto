@@ -156,7 +156,7 @@ const filteredConversations = computed(() => {
   if (dateFilter.value === 'all') return convs;
   const ms = { today: 86400000, '7d': 604800000, '30d': 2592000000 };
   const cutoff = Date.now() - ms[dateFilter.value];
-  return convs.filter(c => c.created_at * 1000 >= cutoff);
+  return convs.filter(c => c.created_at >= cutoff);
 });
 
 // ─── Conversations by column ──────────────────────────────────────────────────
