@@ -4,11 +4,12 @@ import Draggable from 'vuedraggable';
 import KanbanCard from './KanbanCard.vue';
 
 const props = defineProps({
-  status: { type: String, required: true },
+  status: { type: String, default: '' },
   label: { type: String, required: true },
   icon: { type: String, required: true },
   colorClass: { type: String, required: true },
   conversations: { type: Array, default: () => [] },
+  readonly: { type: Boolean, default: false },
 });
 
 const emit = defineEmits(['cardMoved']);
@@ -52,7 +53,7 @@ const onColumnChange = event => {
     <!-- Lista de cards com drag-and-drop -->
     <Draggable
       v-model="localConversations"
-      group="kanban"
+      :group="{ name: 'kanban', pull: true, put: !readonly }"
       item-key="id"
       tag="div"
       ghost-class="kanban-ghost"
