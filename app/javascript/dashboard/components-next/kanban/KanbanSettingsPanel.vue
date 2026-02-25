@@ -20,7 +20,8 @@ const renamingId = ref(null);
 const renameValue = ref('');
 
 const showAddMenu = ref(false);
-const addTab = ref('status'); // 'status' | 'label' | 'custom'
+const showStatusSection = ref(false);
+const showLabelSection = ref(false);
 const labelSearch = ref('');
 const customColumnName = ref('');
 
@@ -298,113 +299,14 @@ const onNameInput = () => {
         v-if="showAddMenu"
         class="absolute bottom-full left-3 right-3 mb-1 bg-[#0d1117] border border-[#1a2035] rounded-xl shadow-2xl overflow-hidden"
       >
-        <!-- Tabs -->
-        <div class="flex border-b border-[#1a2035]">
-          <button
-            class="flex-1 py-2 text-xs font-medium transition-colors"
-            :class="
-              addTab === 'status'
-                ? 'text-n-slate-12 bg-[#1a2035]'
-                : 'text-n-slate-9 hover:text-n-slate-11'
-            "
-            @click="addTab = 'status'"
-          >
-            {{ $t('KANBAN.SETTINGS.ADD_STATUS_COLUMN') }}
-          </button>
-          <button
-            class="flex-1 py-2 text-xs font-medium transition-colors"
-            :class="
-              addTab === 'label'
-                ? 'text-n-slate-12 bg-[#1a2035]'
-                : 'text-n-slate-9 hover:text-n-slate-11'
-            "
-            @click="addTab = 'label'"
-          >
-            {{ $t('KANBAN.SETTINGS.ADD_LABEL_COLUMN') }}
-          </button>
-          <button
-            class="flex-1 py-2 text-xs font-medium transition-colors"
-            :class="
-              addTab === 'custom'
-                ? 'text-n-slate-12 bg-[#1a2035]'
-                : 'text-n-slate-9 hover:text-n-slate-11'
-            "
-            @click="addTab = 'custom'"
-          >
-            {{ $t('KANBAN.SETTINGS.ADD_CUSTOM_COLUMN') }}
-          </button>
-        </div>
-
-        <!-- Status tab -->
-        <div v-if="addTab === 'status'" class="p-2">
-          <div
-            v-if="availableStatuses.length === 0"
-            class="py-3 text-center text-xs text-n-slate-9"
-          >
-            {{ $t('KANBAN.SETTINGS.ALL_STATUS_ADDED') }}
-          </div>
-          <button
-            v-for="def in availableStatuses"
-            :key="def.status"
-            class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-n-slate-11 hover:bg-[#1a2035] hover:text-n-slate-12 transition-colors"
-            @click="addStatusColumn(def)"
-          >
-            <span class="size-3.5" :class="[def.icon, def.colorClass]" />
-            {{ STATUS_LABELS[def.status] ?? def.status }}
-          </button>
-        </div>
-
-        <!-- Label tab -->
-        <div v-if="addTab === 'label'" class="p-2">
-          <input
-            v-model="labelSearch"
-            class="w-full bg-[#1a2035] border border-[#1a2035] rounded-lg px-2 py-1 text-xs text-n-slate-12 placeholder:text-n-slate-9 focus:outline-none focus:border-[#3B63A8] mb-2 transition-colors"
-            :placeholder="$t('KANBAN.SETTINGS.SEARCH_LABELS')"
-          />
-          <div
-            v-if="filteredLabels.length === 0"
-            class="py-3 text-center text-xs text-n-slate-9"
-          >
-            {{ $t('KANBAN.SETTINGS.NO_LABELS') }}
-          </div>
-          <div class="max-h-40 overflow-y-auto flex flex-col gap-0.5">
-            <button
-              v-for="label in filteredLabels"
-              :key="label.title"
-              class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs hover:bg-[#1a2035] transition-colors"
-              :class="
-                usedLabelTitles.includes(label.title)
-                  ? 'text-n-slate-7 cursor-not-allowed'
-                  : 'text-n-slate-11 hover:text-n-slate-12'
-              "
-              :disabled="usedLabelTitles.includes(label.title)"
-              @click="addLabelColumn(label)"
-            >
-              <span
-                class="size-2.5 rounded-full flex-shrink-0"
-                :style="{ background: label.color }"
-              />
-              {{ label.title }}
-              <span
-                v-if="usedLabelTitles.includes(label.title)"
-                class="ml-auto text-[10px] text-n-slate-7"
-              >
-                {{ $t('KANBAN.SETTINGS.ALREADY_ADDED') }}
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Custom tab -->
-        <div v-if="addTab === 'custom'" class="p-3">
-          <p class="text-xs text-n-slate-9 mb-2">
-            {{ $t('KANBAN.SETTINGS.ADD_CUSTOM_COLUMN') }}
-          </p>
+        <!-- Primary: custom stage input -->
+        <div class="p-3 border-b border-[#1a2035]">
           <div class="flex gap-2">
             <input
               v-model="customColumnName"
               class="flex-1 bg-[#1a2035] border border-[#1a2035] rounded-lg px-2 py-1.5 text-xs text-n-slate-12 placeholder:text-n-slate-9 focus:outline-none focus:border-[#3B63A8] transition-colors"
               :placeholder="$t('KANBAN.SETTINGS.CUSTOM_COLUMN_PLACEHOLDER')"
+              autofocus
               @keyup.enter="addCustomColumn"
             />
             <button
@@ -414,6 +316,98 @@ const onNameInput = () => {
             >
               <span class="i-lucide-plus size-3.5" />
             </button>
+          </div>
+        </div>
+
+        <!-- Secondary: add by status (collapsible) -->
+        <div class="border-b border-[#1a2035]">
+          <button
+            class="w-full flex items-center gap-2 px-3 py-2 text-xs text-n-slate-9 hover:text-n-slate-11 transition-colors"
+            @click="showStatusSection = !showStatusSection"
+          >
+            <span
+              class="size-3 transition-transform"
+              :class="
+                showStatusSection
+                  ? 'i-lucide-chevron-down'
+                  : 'i-lucide-chevron-right'
+              "
+            />
+            {{ $t('KANBAN.SETTINGS.ADD_BY_STATUS') }}
+          </button>
+          <div v-if="showStatusSection" class="pb-2 px-2">
+            <div
+              v-if="availableStatuses.length === 0"
+              class="py-2 text-center text-xs text-n-slate-9"
+            >
+              {{ $t('KANBAN.SETTINGS.ALL_STATUS_ADDED') }}
+            </div>
+            <button
+              v-for="def in availableStatuses"
+              :key="def.status"
+              class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-n-slate-11 hover:bg-[#1a2035] hover:text-n-slate-12 transition-colors"
+              @click="addStatusColumn(def)"
+            >
+              <span class="size-3.5" :class="[def.icon, def.colorClass]" />
+              {{ STATUS_LABELS[def.status] ?? def.status }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary: add by label (collapsible) -->
+        <div>
+          <button
+            class="w-full flex items-center gap-2 px-3 py-2 text-xs text-n-slate-9 hover:text-n-slate-11 transition-colors"
+            @click="showLabelSection = !showLabelSection"
+          >
+            <span
+              class="size-3 transition-transform"
+              :class="
+                showLabelSection
+                  ? 'i-lucide-chevron-down'
+                  : 'i-lucide-chevron-right'
+              "
+            />
+            {{ $t('KANBAN.SETTINGS.ADD_BY_LABEL') }}
+          </button>
+          <div v-if="showLabelSection" class="pb-2 px-2">
+            <input
+              v-model="labelSearch"
+              class="w-full bg-[#1a2035] border border-[#1a2035] rounded-lg px-2 py-1 text-xs text-n-slate-12 placeholder:text-n-slate-9 focus:outline-none focus:border-[#3B63A8] mb-2 transition-colors"
+              :placeholder="$t('KANBAN.SETTINGS.SEARCH_LABELS')"
+            />
+            <div
+              v-if="filteredLabels.length === 0"
+              class="py-2 text-center text-xs text-n-slate-9"
+            >
+              {{ $t('KANBAN.SETTINGS.NO_LABELS') }}
+            </div>
+            <div class="max-h-36 overflow-y-auto flex flex-col gap-0.5">
+              <button
+                v-for="label in filteredLabels"
+                :key="label.title"
+                class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs hover:bg-[#1a2035] transition-colors"
+                :class="
+                  usedLabelTitles.includes(label.title)
+                    ? 'text-n-slate-7 cursor-not-allowed'
+                    : 'text-n-slate-11 hover:text-n-slate-12'
+                "
+                :disabled="usedLabelTitles.includes(label.title)"
+                @click="addLabelColumn(label)"
+              >
+                <span
+                  class="size-2.5 rounded-full flex-shrink-0"
+                  :style="{ background: label.color }"
+                />
+                {{ label.title }}
+                <span
+                  v-if="usedLabelTitles.includes(label.title)"
+                  class="ml-auto text-[10px] text-n-slate-7"
+                >
+                  {{ $t('KANBAN.SETTINGS.ALREADY_ADDED') }}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

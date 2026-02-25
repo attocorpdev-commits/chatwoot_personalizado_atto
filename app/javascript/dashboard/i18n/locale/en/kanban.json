@@ -21,7 +21,9 @@
       "SEARCH_LABELS": "Search labels...",
       "LABEL_BADGE": "label",
       "ALL_STATUS_ADDED": "All status columns already added",
-      "ALREADY_ADDED": "added"
+      "ALREADY_ADDED": "added",
+      "ADD_BY_STATUS": "Add by status",
+      "ADD_BY_LABEL": "Add by label"
     },
     "TEMPLATES": {
       "NEW": "New template",

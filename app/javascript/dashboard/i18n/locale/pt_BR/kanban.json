@@ -21,7 +21,9 @@
       "SEARCH_LABELS": "Pesquisar etiquetas...",
       "LABEL_BADGE": "etiqueta",
       "ALL_STATUS_ADDED": "Todas as colunas de status já foram adicionadas",
-      "ALREADY_ADDED": "adicionado"
+      "ALREADY_ADDED": "adicionado",
+      "ADD_BY_STATUS": "Adicionar por status",
+      "ADD_BY_LABEL": "Adicionar por etiqueta"
     },
     "TEMPLATES": {
       "NEW": "Novo template",
