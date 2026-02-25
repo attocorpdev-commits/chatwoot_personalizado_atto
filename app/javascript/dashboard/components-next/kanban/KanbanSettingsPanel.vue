@@ -62,10 +62,6 @@ const usedLabelTitles = computed(() =>
   localColumns.value.filter(c => c.type === 'label').map(c => c.labelTitle)
 );
 
-const isBaseStatus = col =>
-  col.type === 'status' &&
-  ['open', 'pending', 'snoozed', 'resolved'].includes(col.status);
-
 const startRename = col => {
   renamingId.value = col.id;
   renameValue.value = col.name;
@@ -244,9 +240,8 @@ const onNameInput = () => {
               {{ $t('KANBAN.SETTINGS.LABEL_BADGE') }}
             </span>
 
-            <!-- Delete (only custom columns) -->
+            <!-- Delete column -->
             <button
-              v-if="!isBaseStatus(col)"
               class="opacity-0 group-hover:opacity-100 flex-shrink-0 size-4 flex items-center justify-center text-n-slate-7 hover:text-red-400 transition-all"
               @click="deleteColumn(col)"
             >

@@ -23,7 +23,32 @@
     },
     "TEMPLATES": {
       "NEW": "New template",
-      "DELETE": "Delete template"
+      "DELETE": "Delete template",
+      "INFOPRODUTO": "Digital Product",
+      "INFOPRODUTO_COLS": {
+        "LEAD": "New Lead",
+        "QUALIFIED": "Qualified",
+        "PROPOSAL": "Proposal Sent",
+        "NEGOTIATION": "Negotiation",
+        "UPSELL": "Upsell",
+        "CLOSED": "Closed"
+      },
+      "EDUCATION": "Education",
+      "EDUCATION_COLS": {
+        "INTEREST": "Interest",
+        "ENROLLMENT": "Enrollment",
+        "IN_PROGRESS": "In Course",
+        "RETENTION": "Retention",
+        "COMPLETED": "Completed"
+      },
+      "HEALTH_CLINIC": "Health Clinic",
+      "HEALTH_CLINIC_COLS": {
+        "SCHEDULING": "Scheduling",
+        "CONFIRMED": "Confirmed",
+        "IN_CARE": "In Care",
+        "POST_VISIT": "Post Visit",
+        "RETURN": "Return"
+      }
     },
     "FILTERS": {
       "ALL": "All",

@@ -69,6 +69,171 @@ const makeDefaultTemplate = () => ({
   ],
 });
 
+const makeInfoprodutoTemplate = () => ({
+  id: 'infoproduto',
+  name: t('KANBAN.TEMPLATES.INFOPRODUTO'),
+  columns: [
+    {
+      id: 'col_ip_lead',
+      type: 'label',
+      labelTitle: 'novo-lead',
+      name: t('KANBAN.TEMPLATES.INFOPRODUTO_COLS.LEAD'),
+      icon: 'i-lucide-user-plus',
+      colorClass: 'text-blue-400',
+      visible: true,
+    },
+    {
+      id: 'col_ip_qualif',
+      type: 'label',
+      labelTitle: 'qualificado',
+      name: t('KANBAN.TEMPLATES.INFOPRODUTO_COLS.QUALIFIED'),
+      icon: 'i-lucide-star',
+      colorClass: 'text-yellow-400',
+      visible: true,
+    },
+    {
+      id: 'col_ip_proposta',
+      type: 'label',
+      labelTitle: 'proposta',
+      name: t('KANBAN.TEMPLATES.INFOPRODUTO_COLS.PROPOSAL'),
+      icon: 'i-lucide-file-text',
+      colorClass: 'text-orange-400',
+      visible: true,
+    },
+    {
+      id: 'col_ip_negoc',
+      type: 'label',
+      labelTitle: 'negociacao',
+      name: t('KANBAN.TEMPLATES.INFOPRODUTO_COLS.NEGOTIATION'),
+      icon: 'i-lucide-handshake',
+      colorClass: 'text-purple-400',
+      visible: true,
+    },
+    {
+      id: 'col_ip_upsell',
+      type: 'label',
+      labelTitle: 'upsell',
+      name: t('KANBAN.TEMPLATES.INFOPRODUTO_COLS.UPSELL'),
+      icon: 'i-lucide-trending-up',
+      colorClass: 'text-pink-400',
+      visible: true,
+    },
+    {
+      id: 'col_ip_fechado',
+      type: 'status',
+      status: 'resolved',
+      name: t('KANBAN.TEMPLATES.INFOPRODUTO_COLS.CLOSED'),
+      icon: 'i-lucide-check-circle',
+      colorClass: 'text-teal-400',
+      visible: true,
+    },
+  ],
+});
+
+const makeEducacaoTemplate = () => ({
+  id: 'educacao',
+  name: t('KANBAN.TEMPLATES.EDUCATION'),
+  columns: [
+    {
+      id: 'col_ed_interesse',
+      type: 'label',
+      labelTitle: 'interesse',
+      name: t('KANBAN.TEMPLATES.EDUCATION_COLS.INTEREST'),
+      icon: 'i-lucide-lightbulb',
+      colorClass: 'text-yellow-400',
+      visible: true,
+    },
+    {
+      id: 'col_ed_inscricao',
+      type: 'label',
+      labelTitle: 'inscricao',
+      name: t('KANBAN.TEMPLATES.EDUCATION_COLS.ENROLLMENT'),
+      icon: 'i-lucide-clipboard-list',
+      colorClass: 'text-blue-400',
+      visible: true,
+    },
+    {
+      id: 'col_ed_curso',
+      type: 'label',
+      labelTitle: 'em-curso',
+      name: t('KANBAN.TEMPLATES.EDUCATION_COLS.IN_PROGRESS'),
+      icon: 'i-lucide-book-open',
+      colorClass: 'text-green-400',
+      visible: true,
+    },
+    {
+      id: 'col_ed_retencao',
+      type: 'label',
+      labelTitle: 'retencao',
+      name: t('KANBAN.TEMPLATES.EDUCATION_COLS.RETENTION'),
+      icon: 'i-lucide-repeat',
+      colorClass: 'text-purple-400',
+      visible: true,
+    },
+    {
+      id: 'col_ed_concluido',
+      type: 'status',
+      status: 'resolved',
+      name: t('KANBAN.TEMPLATES.EDUCATION_COLS.COMPLETED'),
+      icon: 'i-lucide-graduation-cap',
+      colorClass: 'text-teal-400',
+      visible: true,
+    },
+  ],
+});
+
+const makeClinicasTemplate = () => ({
+  id: 'clinicas',
+  name: t('KANBAN.TEMPLATES.HEALTH_CLINIC'),
+  columns: [
+    {
+      id: 'col_cl_agenda',
+      type: 'label',
+      labelTitle: 'agendamento',
+      name: t('KANBAN.TEMPLATES.HEALTH_CLINIC_COLS.SCHEDULING'),
+      icon: 'i-lucide-calendar-plus',
+      colorClass: 'text-blue-400',
+      visible: true,
+    },
+    {
+      id: 'col_cl_confirm',
+      type: 'label',
+      labelTitle: 'confirmado',
+      name: t('KANBAN.TEMPLATES.HEALTH_CLINIC_COLS.CONFIRMED'),
+      icon: 'i-lucide-calendar-check',
+      colorClass: 'text-green-400',
+      visible: true,
+    },
+    {
+      id: 'col_cl_atend',
+      type: 'label',
+      labelTitle: 'em-atendimento',
+      name: t('KANBAN.TEMPLATES.HEALTH_CLINIC_COLS.IN_CARE'),
+      icon: 'i-lucide-stethoscope',
+      colorClass: 'text-orange-400',
+      visible: true,
+    },
+    {
+      id: 'col_cl_pos',
+      type: 'label',
+      labelTitle: 'pos-consulta',
+      name: t('KANBAN.TEMPLATES.HEALTH_CLINIC_COLS.POST_VISIT'),
+      icon: 'i-lucide-clipboard-check',
+      colorClass: 'text-purple-400',
+      visible: true,
+    },
+    {
+      id: 'col_cl_retorno',
+      type: 'label',
+      labelTitle: 'retorno',
+      name: t('KANBAN.TEMPLATES.HEALTH_CLINIC_COLS.RETURN'),
+      icon: 'i-lucide-rotate-ccw',
+      colorClass: 'text-teal-400',
+      visible: true,
+    },
+  ],
+});
+
 // ─── Board state (persisted in localStorage) ─────────────────────────────────
 
 const boardKey = computed(() => `kanban_boards_${accountId.value}`);
@@ -77,7 +242,15 @@ const loadBoardData = () => {
   const saved = LocalStorage.get(boardKey.value);
   if (saved && saved.templates && saved.activeTemplateId) return saved;
   const def = makeDefaultTemplate();
-  return { templates: [def], activeTemplateId: def.id };
+  return {
+    templates: [
+      def,
+      makeInfoprodutoTemplate(),
+      makeEducacaoTemplate(),
+      makeClinicasTemplate(),
+    ],
+    activeTemplateId: def.id,
+  };
 };
 
 const boardData = ref(loadBoardData());

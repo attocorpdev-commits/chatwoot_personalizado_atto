@@ -23,7 +23,32 @@
     },
     "TEMPLATES": {
       "NEW": "Novo template",
-      "DELETE": "Excluir template"
+      "DELETE": "Excluir template",
+      "INFOPRODUTO": "Infoproduto",
+      "INFOPRODUTO_COLS": {
+        "LEAD": "Novo Lead",
+        "QUALIFIED": "Qualificado",
+        "PROPOSAL": "Proposta Enviada",
+        "NEGOTIATION": "Negociação",
+        "UPSELL": "Upsell",
+        "CLOSED": "Fechado"
+      },
+      "EDUCATION": "Educação",
+      "EDUCATION_COLS": {
+        "INTEREST": "Interesse",
+        "ENROLLMENT": "Inscrição",
+        "IN_PROGRESS": "Em Curso",
+        "RETENTION": "Retenção",
+        "COMPLETED": "Concluído"
+      },
+      "HEALTH_CLINIC": "Clínicas de Saúde",
+      "HEALTH_CLINIC_COLS": {
+        "SCHEDULING": "Agendamento",
+        "CONFIRMED": "Confirmado",
+        "IN_CARE": "Em Atendimento",
+        "POST_VISIT": "Pós-Consulta",
+        "RETURN": "Retorno"
+      }
     },
     "FILTERS": {
       "ALL": "Todos",
