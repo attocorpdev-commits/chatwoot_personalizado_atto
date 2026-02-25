@@ -350,8 +350,27 @@ const conversationsByColumn = computed(() => {
 
 // ─── Card moved ───────────────────────────────────────────────────────────────
 
-const onCardMoved = ({ conversationId, newStatus }) => {
-  store.dispatch('toggleStatus', { conversationId, status: newStatus });
+const onCardMoved = ({ conversationId, newStatus, columnType, labelTitle }) => {
+  if (columnType === 'status') {
+    store.dispatch('toggleStatus', { conversationId, status: newStatus });
+    return;
+  }
+  // Label column: swap board-level labels, keep unrelated labels intact
+  const boardLabelTitles = activeColumns.value
+    .filter(c => c.type === 'label')
+    .map(c => c.labelTitle);
+  const conversation = allConversations.value.find(
+    c => c.id === conversationId
+  );
+  const currentLabels = conversation?.labels ?? [];
+  const newLabels = [
+    ...currentLabels.filter(l => !boardLabelTitles.includes(l)),
+    labelTitle,
+  ];
+  store.dispatch('conversationLabels/update', {
+    conversationId,
+    labels: newLabels,
+  });
 };
 
 // ─── Available labels for settings panel ─────────────────────────────────────
@@ -485,7 +504,8 @@ const onAddConversation = () => {
         :icon="col.icon"
         :color-class="col.colorClass"
         :conversations="conversationsByColumn[col.id] ?? []"
-        :readonly="col.type === 'label'"
+        :column-type="col.type"
+        :label-title="col.labelTitle || ''"
         @card-moved="onCardMoved"
         @add-conversation="onAddConversation"
       />

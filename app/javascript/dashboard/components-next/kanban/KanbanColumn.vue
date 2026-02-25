@@ -9,7 +9,8 @@ const props = defineProps({
   icon: { type: String, required: true },
   colorClass: { type: String, required: true },
   conversations: { type: Array, default: () => [] },
-  readonly: { type: Boolean, default: false },
+  columnType: { type: String, default: 'status' },
+  labelTitle: { type: String, default: '' },
 });
 
 const emit = defineEmits(['cardMoved', 'addConversation']);
@@ -28,6 +29,8 @@ const onColumnChange = event => {
     emit('cardMoved', {
       conversationId: event.added.element.id,
       newStatus: props.status,
+      columnType: props.columnType,
+      labelTitle: props.labelTitle,
     });
   }
 };
@@ -53,7 +56,7 @@ const onColumnChange = event => {
     <!-- Lista de cards com drag-and-drop -->
     <Draggable
       v-model="localConversations"
-      :group="{ name: 'kanban', pull: true, put: !readonly }"
+      :group="{ name: 'kanban', pull: true, put: true }"
       item-key="id"
       tag="div"
       ghost-class="kanban-ghost"

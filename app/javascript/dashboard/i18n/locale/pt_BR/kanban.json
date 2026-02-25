@@ -14,6 +14,8 @@
       "ADD_COLUMN": "Adicionar coluna",
       "ADD_STATUS_COLUMN": "Status",
       "ADD_LABEL_COLUMN": "Etiqueta",
+      "ADD_CUSTOM_COLUMN": "Personalizada",
+      "CUSTOM_COLUMN_PLACEHOLDER": "Nome da coluna...",
       "DELETE_COLUMN": "Remover",
       "NO_LABELS": "Nenhuma etiqueta disponível",
       "SEARCH_LABELS": "Pesquisar etiquetas...",

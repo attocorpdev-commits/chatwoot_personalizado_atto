@@ -14,6 +14,8 @@
       "ADD_COLUMN": "Add column",
       "ADD_STATUS_COLUMN": "Status",
       "ADD_LABEL_COLUMN": "Label",
+      "ADD_CUSTOM_COLUMN": "Custom",
+      "CUSTOM_COLUMN_PLACEHOLDER": "Column name...",
       "DELETE_COLUMN": "Remove",
       "NO_LABELS": "No labels available",
       "SEARCH_LABELS": "Search labels...",

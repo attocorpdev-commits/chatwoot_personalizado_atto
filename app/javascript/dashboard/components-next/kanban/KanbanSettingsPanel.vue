@@ -20,8 +20,9 @@ const renamingId = ref(null);
 const renameValue = ref('');
 
 const showAddMenu = ref(false);
-const addTab = ref('status'); // 'status' | 'label'
+const addTab = ref('status'); // 'status' | 'label' | 'custom'
 const labelSearch = ref('');
+const customColumnName = ref('');
 
 const STATUS_DEFS = [
   { status: 'open', icon: 'i-lucide-circle-dot', colorClass: 'text-[#3B63A8]' },
@@ -61,6 +62,14 @@ const filteredLabels = computed(() => {
 const usedLabelTitles = computed(() =>
   localColumns.value.filter(c => c.type === 'label').map(c => c.labelTitle)
 );
+
+const slugify = name =>
+  name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 
 const startRename = col => {
   renamingId.value = col.id;
@@ -139,6 +148,28 @@ const addLabelColumn = label => {
   );
   showAddMenu.value = false;
   labelSearch.value = '';
+};
+
+const addCustomColumn = () => {
+  const name = customColumnName.value.trim();
+  if (!name) return;
+  const labelTitle = slugify(name);
+  const col = {
+    id: `col_custom_${labelTitle}_${Date.now()}`,
+    type: 'label',
+    labelTitle,
+    name,
+    icon: 'i-lucide-layout-list',
+    colorClass: 'text-slate-400',
+    visible: true,
+  };
+  localColumns.value.push(col);
+  emit(
+    'update:columns',
+    localColumns.value.map(c => ({ ...c }))
+  );
+  customColumnName.value = '';
+  showAddMenu.value = false;
 };
 
 const onNameInput = () => {
@@ -291,6 +322,17 @@ const onNameInput = () => {
           >
             {{ $t('KANBAN.SETTINGS.ADD_LABEL_COLUMN') }}
           </button>
+          <button
+            class="flex-1 py-2 text-xs font-medium transition-colors"
+            :class="
+              addTab === 'custom'
+                ? 'text-n-slate-12 bg-[#1a2035]'
+                : 'text-n-slate-9 hover:text-n-slate-11'
+            "
+            @click="addTab = 'custom'"
+          >
+            {{ $t('KANBAN.SETTINGS.ADD_CUSTOM_COLUMN') }}
+          </button>
         </div>
 
         <!-- Status tab -->
@@ -349,6 +391,28 @@ const onNameInput = () => {
               >
                 {{ $t('KANBAN.SETTINGS.ALREADY_ADDED') }}
               </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom tab -->
+        <div v-if="addTab === 'custom'" class="p-3">
+          <p class="text-xs text-n-slate-9 mb-2">
+            {{ $t('KANBAN.SETTINGS.ADD_CUSTOM_COLUMN') }}
+          </p>
+          <div class="flex gap-2">
+            <input
+              v-model="customColumnName"
+              class="flex-1 bg-[#1a2035] border border-[#1a2035] rounded-lg px-2 py-1.5 text-xs text-n-slate-12 placeholder:text-n-slate-9 focus:outline-none focus:border-[#3B63A8] transition-colors"
+              :placeholder="$t('KANBAN.SETTINGS.CUSTOM_COLUMN_PLACEHOLDER')"
+              @keyup.enter="addCustomColumn"
+            />
+            <button
+              class="flex items-center justify-center size-7 rounded-lg bg-[#3B63A8] hover:bg-[#2a4f8f] text-white transition-colors disabled:opacity-40"
+              :disabled="!customColumnName.trim()"
+              @click="addCustomColumn"
+            >
+              <span class="i-lucide-plus size-3.5" />
             </button>
           </div>
         </div>
