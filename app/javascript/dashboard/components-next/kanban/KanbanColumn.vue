@@ -12,7 +12,7 @@ const props = defineProps({
   readonly: { type: Boolean, default: false },
 });
 
-const emit = defineEmits(['cardMoved']);
+const emit = defineEmits(['cardMoved', 'addConversation']);
 
 const localConversations = ref([...props.conversations]);
 
@@ -78,6 +78,15 @@ const onColumnChange = event => {
         {{ $t('KANBAN.EMPTY_STATE') }}
       </p>
     </div>
+
+    <!-- Rodapé: botão nova conversa -->
+    <button
+      class="flex items-center gap-1.5 w-full px-4 py-2.5 text-xs text-n-slate-9 hover:text-n-slate-11 hover:bg-[#0d1117] border-t border-[#1a2035] transition-colors flex-shrink-0"
+      @click="emit('addConversation')"
+    >
+      <span class="i-lucide-plus size-3.5" />
+      {{ $t('KANBAN.ADD_CONVERSATION') }}
+    </button>
   </div>
 </template>
 

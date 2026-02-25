@@ -1,0 +1,40 @@
+{
+  "KANBAN": {
+    "TITLE": "Kanban",
+    "EMPTY_STATE": "Nenhuma conversa",
+    "COLUMNS": {
+      "OPEN": "Aberto",
+      "PENDING": "Pendente",
+      "SNOOZED": "Adiado",
+      "RESOLVED": "Resolvido"
+    },
+    "SETTINGS": {
+      "TITLE": "Editar quadro",
+      "TEMPLATE_NAME_PLACEHOLDER": "Nome do template",
+      "ADD_COLUMN": "Adicionar coluna",
+      "ADD_STATUS_COLUMN": "Status",
+      "ADD_LABEL_COLUMN": "Etiqueta",
+      "DELETE_COLUMN": "Remover",
+      "NO_LABELS": "Nenhuma etiqueta disponível",
+      "SEARCH_LABELS": "Pesquisar etiquetas...",
+      "LABEL_BADGE": "etiqueta",
+      "ALL_STATUS_ADDED": "Todas as colunas de status já foram adicionadas",
+      "ALREADY_ADDED": "adicionado"
+    },
+    "TEMPLATES": {
+      "NEW": "Novo template",
+      "DELETE": "Excluir template"
+    },
+    "FILTERS": {
+      "ALL": "Todos",
+      "TODAY": "Hoje",
+      "LAST_7_DAYS": "7 dias",
+      "LAST_30_DAYS": "30 dias"
+    },
+    "ACTIONS": {
+      "OPEN_CONVERSATION": "Abrir conversa",
+      "OPEN_IN_NEW_TAB": "Abrir em nova aba"
+    },
+    "ADD_CONVERSATION": "Nova conversa"
+  }
+}

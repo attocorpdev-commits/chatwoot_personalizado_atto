@@ -30,6 +30,11 @@
       "TODAY": "Today",
       "LAST_7_DAYS": "7 days",
       "LAST_30_DAYS": "30 days"
-    }
+    },
+    "ACTIONS": {
+      "OPEN_CONVERSATION": "Open conversation",
+      "OPEN_IN_NEW_TAB": "Open in new tab"
+    },
+    "ADD_CONVERSATION": "New conversation"
   }
 }

@@ -5,6 +5,8 @@ import { useMapGetter, useStore } from 'dashboard/composables/store';
 import { useAccount } from 'dashboard/composables/useAccount';
 import { LocalStorage } from 'shared/helpers/localStorage';
 import getUuid from 'widget/helpers/uuid';
+import { emitter } from 'shared/helpers/mitt';
+import { BUS_EVENTS } from 'shared/constants/busEvents';
 import KanbanColumn from './KanbanColumn.vue';
 import KanbanSettingsPanel from './KanbanSettingsPanel.vue';
 
@@ -182,6 +184,12 @@ const onCardMoved = ({ conversationId, newStatus }) => {
 // ─── Available labels for settings panel ─────────────────────────────────────
 
 const availableLabels = computed(() => getLabels.value ?? []);
+
+// ─── New conversation ─────────────────────────────────────────────────────────
+
+const onAddConversation = () => {
+  emitter.emit(BUS_EVENTS.NEW_CONVERSATION_MODAL, true);
+};
 </script>
 
 <template>
@@ -306,6 +314,7 @@ const availableLabels = computed(() => getLabels.value ?? []);
         :conversations="conversationsByColumn[col.id] ?? []"
         :readonly="col.type === 'label'"
         @card-moved="onCardMoved"
+        @add-conversation="onAddConversation"
       />
     </div>
 
