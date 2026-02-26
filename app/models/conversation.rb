@@ -89,6 +89,12 @@ class Conversation < ApplicationRecord
 
     open.where('last_activity_at < ?', Time.now.utc - auto_resolve_after.minutes)
   }
+  scope :awaiting_follow_up, lambda { |follow_up_after|
+    return none if follow_up_after.to_i.zero?
+
+    open.where('last_activity_at < ? AND follow_up_sent_at IS NULL', Time.now.utc - follow_up_after.minutes)
+        .where.not(contact_id: nil)
+  }
 
   scope :last_user_message_at, lambda {
     joins(

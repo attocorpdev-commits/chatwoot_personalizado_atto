@@ -72,6 +72,26 @@
         },
         "UPDATE_BUTTON": "Save Changes"
       },
+      "FOLLOW_UP": {
+        "TITLE": "Automatic Follow-up",
+        "NOTE": "Automatically send a follow-up message to conversations that have been inactive for a specified period.",
+        "DURATION": {
+          "LABEL": "Inactivity duration",
+          "HELP": "Time period of inactivity after which a follow-up message will be sent",
+          "PLACEHOLDER": "30",
+          "ERROR": "Follow-up duration should be between 10 minutes and 999 days",
+          "API": {
+            "SUCCESS": "Follow-up settings updated successfully",
+            "ERROR": "Failed to update follow-up settings"
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Follow-up message",
+          "PLACEHOLDER": "Hi! Just checking in — do you still need help?",
+          "HELP": "Message sent to the customer after the inactivity period"
+        },
+        "UPDATE_BUTTON": "Save Changes"
+      },
       "NAME": {
         "LABEL": "Account name",
         "PLACEHOLDER": "Your account name",
