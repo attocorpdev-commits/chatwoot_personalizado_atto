@@ -72,6 +72,26 @@
         },
         "UPDATE_BUTTON": "Salvar Alterações"
       },
+      "FOLLOW_UP": {
+        "TITLE": "Follow-up Automático",
+        "NOTE": "Envia automaticamente uma mensagem de follow-up para conversas que ficaram inativas por um período determinado.",
+        "DURATION": {
+          "LABEL": "Duração da inatividade",
+          "HELP": "Período de inatividade após o qual a mensagem de follow-up será enviada",
+          "PLACEHOLDER": "30",
+          "ERROR": "O tempo para follow-up deve ser entre 10 minutos e 999 dias",
+          "API": {
+            "SUCCESS": "Configurações de follow-up atualizadas com sucesso",
+            "ERROR": "Falha ao atualizar as configurações de follow-up"
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Mensagem de follow-up",
+          "PLACEHOLDER": "Olá! Só passando para saber se ainda precisa de ajuda?",
+          "HELP": "Mensagem enviada ao cliente após o período de inatividade"
+        },
+        "UPDATE_BUTTON": "Salvar Alterações"
+      },
       "NAME": {
         "LABEL": "Nome da Conta",
         "PLACEHOLDER": "Nome da sua conta",
